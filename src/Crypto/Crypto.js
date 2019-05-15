@@ -5,7 +5,8 @@ import "./Crypto.css";
 export class Crypto extends Component {
   render() {
     return (
-      <div className="crypto">
+        <div></div>
+      /*<div className="crypto">
         <div className="card-deck">
           <div className="card">
             <div class="align-self-center">
@@ -67,7 +68,7 @@ export class Crypto extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/
     );
   }
 }
