@@ -1,7 +1,7 @@
-var express = require("express");
+import express from "express";
 var router = express.Router();
-var axios = require("axios");
-var cache = require("../cache/cache.json");
+import axios from "axios";
+import cache from "../../public/json/cache.json";
 
 const axiosInstance = axios.create({
   headers: {
@@ -35,4 +35,4 @@ router.get("/cryptocurrency/listings/latest", function(req, res, next) {
     });*/
 });
 
-module.exports = router;
+export default router;

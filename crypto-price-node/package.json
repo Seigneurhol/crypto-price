@@ -3,17 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./src/bin/www",
+    "server": "babel-node ./src/bin/www",
+    "dev": "nodemon --exec NODE_ENV=development npm run server",
+    "clean": "rm -rf ./src/dist",
+    "build": "babel ./src --out-dir dist",
+    "prod": "NODE_ENV=production npm-run-all clean build server:prod"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
-    "debug": "~2.2.0",
+    "debug": "~4.1.1",
     "express": "^4.17.0",
     "jade": "~1.11.0",
     "morgan": "^1.9.1",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4"
   }
 }

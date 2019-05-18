@@ -4,9 +4,11 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('crypto-price-node:server');
-var http = require('http');
+import app from '../app';
+import debugLib from'debug';
+import http from 'http';
+
+const debug = debugLib('crypto-price-node:server');
 
 /**
  * Get port from environment and store in Express.
