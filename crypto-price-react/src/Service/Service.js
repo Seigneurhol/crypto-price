@@ -11,17 +11,17 @@ const axiosInstance = axios.create({
 // Faire l'appel via mon back end pour enelver l'erreur CORS
 // Trop compliqué par Chrome faire via Node.js
 // Et faire un cache si possible via Node.js
-function getCryptoByMarketcap(callback) {
-  axiosInstance
-    .get("http://localhost:3001/cryptocurrency/listings/latest")
-    .then(response => {
-      console.log(response);
-      callback(response);
-    })
-    .catch(error => {
-      console.log(error);
-      callback(error);
-    });
+async function getCryptoByMarketcap() {
+  return new Promise((resolve, reject) => {
+    axiosInstance
+      .get("http://localhost:3001/cryptocurrency/listings/latest")
+      .then(response => {
+        resolve(response);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
 }
 
 export default getCryptoByMarketcap;
