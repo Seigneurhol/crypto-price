@@ -85,6 +85,8 @@ input {
     border-top: none;
 }
 
-.cryptoList {
-    margin-bottom: 20px;
+.flex-container {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 20px;
 }

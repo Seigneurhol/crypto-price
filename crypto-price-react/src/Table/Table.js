@@ -7,7 +7,7 @@ import Crypto from "../Crypto/Crypto";
  */
 function Table(props) {
   return props.cryptoList ? (
-    <div className="cryptoList light-shadow">
+    <div className="light-shadow">
       <table className="table">
         <thead>
           <tr>

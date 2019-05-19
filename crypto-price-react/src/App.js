@@ -24,7 +24,8 @@ export class App extends Component {
       .then(response => {
         this.setState({
           crypto: response.data.data.data,
-          cryptoFiltered: response.data.data.data
+          cryptoFiltered: response.data.data.data,
+          timestamp: response.status.timestamp
         });
       })
       .catch(error => {
@@ -35,7 +36,7 @@ export class App extends Component {
 
   /**
    * Filter crypto by user input in the search bar
-   * @param {string} event 
+   * @param {string} event
    */
   handleChange(event) {
     const input = event.target.value;
@@ -54,13 +55,31 @@ export class App extends Component {
    */
   render() {
     const AlertComp = this.state.error ? <Alert /> : null;
+    const lastUpdated = this.state.crypto ? (
+      <div className="flex-container">
+        <div className="text-secondary">
+          Last update :
+          {new Intl.DateTimeFormat("en-GB", {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric"
+          }).format(this.state.timestamp)}
+        </div>
+      </div>
+    ) : null;
     return (
       <div className="app">
         <Navbar />
         <div className="container">
-          <SearchBar value={this.state.input} handleChange={this.handleChange}/>
+          <SearchBar
+            value={this.state.input}
+            handleChange={this.handleChange}
+          />
           {AlertComp}
           <Table cryptoList={this.state.cryptoFiltered} />
+          {lastUpdated}
         </div>
       </div>
     );
