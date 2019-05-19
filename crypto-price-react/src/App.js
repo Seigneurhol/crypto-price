@@ -5,36 +5,62 @@ import Navbar from "./Navbar/Navbar";
 import getCryptoByMarketcap from "./Service/Service";
 import Alert from "./Alert/Alert";
 import Table from "./Table/Table";
+import SearchBar from "./SearchBar/SearchBar";
 
-//ICI Idée implenter une recherche et mettre une shadow autour du tableau et change en couleur
 export class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { input: "" };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  /**
+   * Call the webservice to get the crypto data
+   */
   componentDidMount() {
-    // Call the webservice to get the crypto data
-    // ICI gerer les errers si y a pas de data
     getCryptoByMarketcap()
       .then(response => {
-        this.setState({ crypto: response.data.data.data });
+        this.setState({
+          crypto: response.data.data.data,
+          cryptoFiltered: response.data.data.data
+        });
       })
       .catch(error => {
+        this.setState({ error: error });
         console.log("Error", error);
       });
   }
 
+  /**
+   * Filter crypto by user input in the search bar
+   * @param {string} event 
+   */
+  handleChange(event) {
+    const input = event.target.value;
+    if (input) {
+      const cryptoFiltered = this.state.crypto.filter(crypto =>
+        crypto.name.toLowerCase().includes(input.toLowerCase())
+      );
+      this.setState({ cryptoFiltered: cryptoFiltered, input: input });
+    } else {
+      this.setState({ cryptoFiltered: this.state.crypto, input: input });
+    }
+  }
+
+  /**
+   * Render the App component
+   */
   render() {
-      // S'affiche apendant le loading du coup mettre un varaible si y a une erreur
-    const AlertComp = !this.state.crypto ? <Alert /> : null;
+    const AlertComp = this.state.error ? <Alert /> : null;
     return (
       <div className="app">
         <Navbar />
-        <div className="container-fluid">
+        <div className="container">
+          <SearchBar value={this.state.input} handleChange={this.handleChange}/>
           {AlertComp}
-          <Table cryptoList={this.state.crypto} />
+          <Table cryptoList={this.state.cryptoFiltered} />
         </div>
       </div>
     );

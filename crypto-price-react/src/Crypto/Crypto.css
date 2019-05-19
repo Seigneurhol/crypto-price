@@ -6,3 +6,15 @@
     width: 100px;
     height: auto;
 }
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+tr th:first-child {
+    padding-left: 32px;
+}

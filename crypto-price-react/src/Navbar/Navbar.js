@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
-export class Navbar extends Component {
-  render() {
+/**
+ * Render the Navbar component
+ * @param {*} props 
+ */
+function Navbar(props) {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm">
         <a className="navbar-brand" href="#">
@@ -30,7 +33,6 @@ export class Navbar extends Component {
         </div>
       </nav>
     );
-  }
 }
 
 export default Navbar;

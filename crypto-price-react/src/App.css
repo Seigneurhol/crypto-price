@@ -33,14 +33,58 @@
 }
 
 table img {
-    width: 50px!important;
-    height: auto!important;
+  width: 50px !important;
+  height: auto !important;
 }
 
-.table > tbody > tr > td, th {
-    vertical-align: middle!important;
+.table > tbody > tr > td,
+th {
+  vertical-align: middle !important;
 }
 
-.container-fluid {
-    margin-top: 50px;
+.container {
+  margin-top: 20px;
+}
+
+.search-bar {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.light-shadow {
+  border-color: rgb(236, 239, 241);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px 0px rgba(236, 239, 241, 0.4);
+}
+
+.search-bar i {
+  margin-right: 20px;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+textarea,
+select,
+input,
+button {
+  outline: none !important;
+}
+
+input {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.table th {
+    border-top: none;
+}
+
+.cryptoList {
+    margin-bottom: 20px;
 }

@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * Render the Alert component
+ */
 function Alert() {
   return (
     <div className="alert alert-danger" role="alert">

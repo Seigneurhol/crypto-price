@@ -7,10 +7,9 @@ const axiosInstance = axios.create({
   }
 });
 
-// ICI Create a Class for web services ? Refactor
-// Faire l'appel via mon back end pour enelver l'erreur CORS
-// Trop compliqué par Chrome faire via Node.js
-// Et faire un cache si possible via Node.js
+/**
+ * Call the webservice to get crypto data
+ */
 async function getCryptoByMarketcap() {
   return new Promise((resolve, reject) => {
     axiosInstance
