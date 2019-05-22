@@ -25,7 +25,7 @@ export class App extends Component {
         this.setState({
           crypto: response.data.data.data,
           cryptoFiltered: response.data.data.data,
-          timestamp: response.status.timestamp
+          timestamp: response.data.data.status.timestamp
         });
       })
       .catch(error => {
@@ -65,7 +65,7 @@ export class App extends Component {
             day: "numeric",
             hour: "numeric",
             minute: "numeric"
-          }).format(this.state.timestamp)}
+          }).format(new Date(this.state.timestamp))}
         </div>
       </div>
     ) : null;
