@@ -3,21 +3,23 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./src/bin/www",
+    "start": "npm run prod",
     "server": "babel-node ./src/bin/www",
     "dev": "nodemon --exec NODE_ENV=development npm run server",
     "clean": "rm -rf ./src/dist",
     "build": "babel ./src --out-dir dist",
-    "prod": "NODE_ENV=production npm-run-all clean build server:prod"
+    "prod": "NODE_ENV=production npm run clean build server:prod",
+    "server:prod": "node ./dist/bin/www",
+    "test": "mocha --require @babel/register './src/test/*.js' --exit"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
     "debug": "~4.1.1",
+    "eslint-config-airbnb": "^17.1.0",
     "express": "^4.17.0",
-    "jade": "~1.11.0",
     "mongodb": "^3.2.5",
     "morgan": "^1.9.1",
     "serve-favicon": "^2.5.0"
@@ -26,6 +28,17 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.4.4"
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.1.4"
   }
 }

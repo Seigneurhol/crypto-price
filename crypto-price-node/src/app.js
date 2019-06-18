@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 const MongoClient = require("mongodb").MongoClient;
 
-import routes from "./routes/index";
+import routes from "./routes";
 
 import cors from "cors";
 
@@ -25,8 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.use("/", routes);
+app.use("/api", routes);
 
+// Connect to the MongoDB
 MongoClient.connect("mongodb://localhost:27017", {
   useNewUrlParser: true
 })
@@ -73,7 +74,7 @@ app.use(function(err, req, res, next) {
 
 // listen for the signal interruption (ctrl-c)
 process.on("SIGINT", () => {
-  dbClient.close();
+  app.locals.db.close();
   process.exit();
 });
 
